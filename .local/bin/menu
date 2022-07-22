@@ -1,0 +1,39 @@
+#!/bin/bash 
+
+options="\
+alacritty
+chromium
+discord
+easytag
+gimp
+qbittorrent
+pavucontrol
+thunar\
+"
+
+arguments="
+	--insensitive
+	--height 24
+	--normal-background    #282828
+	--normal-foreground    #ebdbb2
+	--selected-background  #d3869b
+	--selected-foreground  #282828
+	--font-name FiraCodeNerdFont
+"
+
+case "$1" in
+	run) eval $(echo -e "$options" | dmenu-wl $arguments --prompt dmenu) ;;
+	pass) passmenu $arguments --prompt pass ;;
+	*) echo -e "Usage:\n\tmenu [run | pass]" ;;
+esac
+#dmenu-wl_run $arguments
+
+#dmenu-wl_run \
+#	--prompt "dmenu" \
+#	--insensitive \
+#	--height 24 \
+#	--font-name "FiraCode Nerd Font" \
+#	--normal-background    "#282828" \
+#	--normal-foreground    "#ebdbb2" \
+#	--selected-background  "#d3869b" \
+#	--selected-foreground  "#282828" \

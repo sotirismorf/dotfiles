@@ -1,0 +1,53 @@
+#!/bin/bash
+
+theme="Adwaita"
+icons="Adwaita"
+font="Noto Sans"
+
+gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-dark"
+gsettings set org.gnome.desktop.interface icon-theme "Mkos-Big-Sur-Night"
+gsettings set org.gnome.desktop.interface font-name "Noto Sans 12"
+
+#avatar-directories
+#can-change-accels
+#clock-format
+#clock-show-date
+#clock-show-seconds
+#clock-show-weekday
+#color-scheme
+#cursor-blink
+#cursor-blink-time
+#cursor-blink-timeout
+#cursor-size
+#cursor-theme
+#document-font-name
+#enable-animations
+#enable-hot-corners
+#font-antialiasing
+#font-hinting
+#font-name
+#font-rgba-order
+#gtk-color-palette
+#gtk-color-scheme
+#gtk-enable-primary-paste
+#gtk-im-module
+#gtk-im-preedit-style
+#gtk-im-status-style
+#gtk-key-theme
+#gtk-theme
+#gtk-timeout-initial
+#gtk-timeout-repeat
+#icon-theme
+#locate-pointer
+#menubar-accel
+#menubar-detachable
+#menus-have-tearoff
+#monospace-font-name
+#overlay-scrolling
+#scaling-factor
+#show-battery-percentage
+#text-scaling-factor
+#toolbar-detachable
+#toolbar-icons-size
+#toolbar-style
+#toolkit-accessibility

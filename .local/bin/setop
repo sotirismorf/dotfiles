@@ -1,0 +1,6 @@
+#!/bin/bash 
+
+VALUE=${1:-8}
+
+sed -i "s/opacity: 0.*/opacity: 0.$VALUE/" ~/.config/alacritty/alacritty.yml
+
