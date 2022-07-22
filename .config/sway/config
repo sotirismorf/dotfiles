@@ -159,6 +159,8 @@ client.urgent            $black     $background  $red       $magenta    $yellow
 title_align center
 
 for_window [ title="." ] title_format '%app_id - %title %class'
+for_window [ app_id="pinentry-qt" ] floating enable
+
 mouse_warping container
 
 tiling_drag enable
