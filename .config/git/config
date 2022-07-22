@@ -1,0 +1,5 @@
+[user]
+	email = sotirismorfakidis@gmail.com
+	name = Sotiris Morfakidis
+[alias]
+	tree = log --oneline --decorate --all --graph

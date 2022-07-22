@@ -1,0 +1,48 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+import:
+  - ~/.config/alacritty/gruvbox_dark.yml
+
+window:
+  opacity: 1
+  dimensions:
+    columns: 120
+
+font:
+  normal:
+    #family: FiraCode Nerd Font
+    family: Noto Sans Mono
+    style: Regular
+  bold:
+    #family: FiraCode Nerd Font
+    family: Noto Sans Mono
+    style: Bold
+  italic:
+    #family: FiraCode Nerd Font
+    family: Noto Sans Mono
+    style: Italic
+  bold_italic:
+    #family: FiraCode Nerd Font
+    family: Noto Sans Mono
+    style: Bold Italic
+
+  size: 11.5
+
+cursor:
+  style:
+    shape: Beam
+  vi_mode_style: Block
+  thickness: 0.15
+
+mouse:
+  hide_when_typing: false
+
+key_bindings:
+  - { key: N, mods: Control,                         action: SpawnNewInstance   }
+  - { key: U, mods: Control,       mode: ~Vi,        action: ScrollHalfPageUp   }
+  - { key: D, mods: Control,       mode: ~Vi,        action: ScrollHalfPageDown }
+  - { key: G, mods: Control,       mode: ~Vi,        action: ScrollToTop        }
+  - { key: G, mods: Shift|Control, mode: ~Vi,        action: ScrollToBottom     }
+  - { key: J, mods: Control,       mode: ~Search,    action: ToggleViMode       }
+  - { key: Escape,                 mode: Vi,         action: ToggleViMode       }
+  - { key: P,                      mode: Vi|~Search, action: Paste              }

@@ -1,0 +1,10 @@
+map <C-i> recolor
+
+set default-bg rgba(40,40,40,0.8)
+set statusbar-bg rgba(40,40,40,0.3)
+
+set font "Noto Sans Mono 11"
+set selection-clipboard clipboard
+set statusbar-h-padding 40
+set statusbar-basename false
+set guioptions sv
