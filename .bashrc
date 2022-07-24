@@ -31,6 +31,7 @@ alias diff='diff --color=auto'
 alias todo='nvim ~/.local/share/todo'
 alias vim='nvim'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias paccache-last2='paccache -rk2'
 
 # Prints n.o. items inside the current working directory
 lc () {

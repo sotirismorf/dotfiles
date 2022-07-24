@@ -6,10 +6,13 @@
 !/.local/
 /.local/*
 
-#!/.local/bin/
+!/.local/bin/
+/.local/bin/*
 
-!/.vimrc
 !/.bashrc
+!/.gitignore
+!/.vimrc
+
 !/.config/alacritty/*
 !/.config/chromium-flags.conf
 !/.config/git/
@@ -18,10 +21,11 @@
 !/.config/waybar/config
 !/.config/waybar/style.css
 !/.config/zathura/zathurarc
-!/.gitignore
+
 !/.local/bin/compileandrun
 !/.local/bin/compiler
 !/.local/bin/connect-to-server
+!/.local/bin/download-video
 !/.local/bin/menu
 !/.local/bin/setop
 !/.local/bin/theme
