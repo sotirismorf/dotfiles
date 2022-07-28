@@ -74,6 +74,8 @@ input "*" {
 	scroll_factor 4.0
 }
 
+for_window [ title="imv" ] input "*" scroll_factor 1.0
+
 # swaymsg -t get_inputs
 input "type:keyboard" {
 	repeat_rate 45
@@ -103,8 +105,8 @@ input "type:keyboard" {
     bindsym $mod+d exec $HOME/.local/bin/menu run > /dev/null
     bindsym $mod+p exec $HOME/.local/bin/menu pass > /dev/null
 
-	bindsym XF86AudioRaiseVolume exec pamixer --allow-boost -i 3
-	bindsym XF86AudioLowerVolume exec pamixer --allow-boost -d 3
+	bindsym XF86AudioRaiseVolume exec pamixer --allow-boost -i 3 > /dev/null
+	bindsym XF86AudioLowerVolume exec pamixer --allow-boost -d 3 > /dev/null
 	bindsym XF86MonBrightnessUp exec brightnessctl s +100 > /dev/null
 	bindsym XF86MonBrightnessDown exec brightnessctl s 100- > /dev/null
 
@@ -150,7 +152,7 @@ gaps inner 10
 # child_border: the border of the window
 
 #                        border     background   text       indicator  child_border
-client.focused           $magenta   $background  $magenta     $magenta    $magenta
+client.focused           $magenta   $background  $magenta   $magenta    $magenta
 client.focused_inactive  $black     $background  $white     $magenta    $black
 client.focused_tab_title $black     $background  $white     $magenta    $black
 client.unfocused         $black     $background  $white     $magenta    $black
