@@ -15,8 +15,10 @@ colors:
     text:   CellBackground
     cursor: CellForeground
   selection:
-    text:       CellBackground
-    background: CellForeground
+    #text:       CellBackground
+    text:       CellForeground
+    #background: CellForeground
+    background: '#505050'
   bright:
     black:   '#928374'
     red:     '#fb4934'

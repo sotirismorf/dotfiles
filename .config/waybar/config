@@ -3,10 +3,8 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 26, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, 
-	// Gaps between modules (4px)
-    // Choose the order of the modules
-    //"modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+    "spacing": 4,
+    //"modules-left": ["sway/workspacs", "sway/mode", "custom/media"],
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "backlight", "sway/language", "battery", "clock", "tray"],
