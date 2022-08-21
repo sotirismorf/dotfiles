@@ -13,7 +13,8 @@
 !/.gitignore
 !/.vimrc
 
-!/.config/alacritty/*
+!/.config/alacritty/
+!/.config/shell/
 !/.config/chromium-flags.conf
 !/.config/git/
 !/.config/sway/
