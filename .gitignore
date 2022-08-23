@@ -22,6 +22,7 @@
 !/.config/waybar/config
 !/.config/waybar/style.css
 !/.config/zathura/zathurarc
+!/.config/zsh/
 
 !/.local/bin/compileandrun
 !/.local/bin/compiler
