@@ -1,17 +1,8 @@
 #!/bin/sh
-#PROMPT='[%F{green}%n%f@%F{magenta}%m%f] %F{blue}%B%~%b%f %F{magenta}$%f '
-#
-#zle_highlight=('paste:none')
-#
-#source $ZDOTDIR/zsh-aliases
-#
-## completion
-#autoload -Uz compinit
-#
+
 #export LC_CTYPE=en_US.UTF-8
-#export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots/"
+export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots/"
 #export PROMPT_COMMAND=prompt
-#
 export EDITOR=nvim
 export TERMINAL=alacritty
 export TERM=xterm-256color
@@ -61,7 +52,7 @@ PROMPT=" $fg[$BOX_COLOR]┏╸$fg[$NAME_COLOR]%n $fg[$DIR_COLOR]%${PWD/#$HOME/~}
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
 
 # Basic auto/tab complete:
-autoload -U compinit
+autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
@@ -69,7 +60,8 @@ _comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
 bindkey -v
-export KEYTIMEOUT=1
+export KEYTIMEOUT=20
+bindkey -M viins jj vi-cmd-mode
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -120,5 +112,4 @@ bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
 # Load syntax highlighting; should be last.
-
 source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
