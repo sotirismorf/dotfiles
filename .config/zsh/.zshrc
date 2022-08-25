@@ -12,7 +12,6 @@ export BROWSER=chromium
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 #PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b $'{\n}'sldkf"
-#PROMPT="firstline"$'\n'"secondline "
 zle_highlight=('paste:none')
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
@@ -40,11 +39,19 @@ BOX_COLOR=magenta
 DOLLAR_COLOR=yellow
 DIR_COLOR=magenta
 GIT_COLOR=red
-PROMPT=" $fg[$BOX_COLOR]┏╸$fg[$NAME_COLOR]%n $fg[$DIR_COLOR]%${PWD/#$HOME/~} $fg[$GIT_COLOR]\${vcs_info_msg_0_}"$'\n'\
-" %{$fg[$BOX_COLOR]%}┗╸%{$fg[$DOLLAR_COLOR]%}$ %{$reset_color%}"
-#PROMPT="%n in ${PWD/#$HOME/~} \${vcs_info_msg_0_} > "
+#PROMPT=" %{$fg[$BOX_COLOR]%}┏╸%{$fg[$NAME_COLOR]%}%n %{$fg[$DIR_COLOR]%} %~ %{$fg[$GIT_COLOR]%}\${vcs_info_msg_0_}"$'\n'\
+#" %{$fg[$BOX_COLOR]%}┗╸%{$fg[$DOLLAR_COLOR]%}$ %{$reset_color%}"
 
-#PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "$'\n'"$ "
+PROMPT=" %{$fg[$BOX_COLOR]%}┏╸"
+PROMPT+="%{$fg[$NAME_COLOR]%}%n "
+PROMPT+="%{$fg[$DIR_COLOR]%}%~ "
+PROMPT+="%{$fg[$GIT_COLOR]%}\${vcs_info_msg_0_}"
+PROMPT+=$'\n'
+PROMPT+=" %{$fg[$BOX_COLOR]%}┗╸"
+PROMPT+="%{$fg[$DOLLAR_COLOR]%}$ "
+PROMPT+="%{$reset_color%}"
+
+#PROMPT="%n in %${PWD/#$HOME/~} \${vcs_info_msg_0_} > "
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
@@ -57,6 +64,12 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
+#zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format "$fg[yellow]%B--- %d%b"
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
 
 # vi mode
 bindkey -v
