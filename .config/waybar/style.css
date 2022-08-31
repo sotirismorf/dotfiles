@@ -1,5 +1,13 @@
+@define-color gv_black #282828;
+@define-color gv_red #cc241d;
+@define-color gv_green #98971a;
+@define-color gv_yellow #d79921;
+@define-color gv_blue #458588;
+@define-color gv_magenta #b16286;
+@define-color gv_cyan #689d6a;
+@define-color gv_white #a89984;
+
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: 'FiraCode Nerd Font', FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 15px;
 	padding-left: 5px;
@@ -7,9 +15,7 @@
 }
 
 window#waybar {
-    /**background-color: rgba(0, 0, 0, 0.1);**/
 	background-color: #282828;
-    /**transition-duration: 200ms;**/
 }
 
 window#waybar.hidden {
@@ -91,6 +97,10 @@ window#waybar.alacritty {
     margin: 0 4px;
 }
 
+#clock {
+	color: @gv_magenta;
+}
+
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
     margin-left: 0;
@@ -101,24 +111,16 @@ window#waybar.alacritty {
     margin-right: 0;
 }
 
-#battery.charging, #battery.plugged {
-    color: #ffffff;
+#network.disconnected {
+	color: @gv_yellow;
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+#battery.charging, #battery.plugged {
+    color: @gv_green;
 }
 
 #battery.critical:not(.charging) {
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    color: @gv_red;
 }
 
 label:focus {
