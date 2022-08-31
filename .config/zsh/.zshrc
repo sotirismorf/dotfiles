@@ -1,13 +1,7 @@
 #!/bin/sh
 
 #export LC_CTYPE=en_US.UTF-8
-export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots/"
 #export PROMPT_COMMAND=prompt
-export EDITOR=nvim
-export TERMINAL=alacritty
-export TERM=xterm-256color
-export BROWSER=chromium
-# Luke's config for the Zoomer Shell
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors

@@ -19,8 +19,7 @@
 !/.config/git/
 !/.config/sway/
 !/.config/user-dirs.dirs
-!/.config/waybar/config
-!/.config/waybar/style.css
+!/.config/waybar/
 !/.config/zathura/zathurarc
 !/.config/zsh/
 
