@@ -1,5 +1,5 @@
-#!/bin/zsh
+#!/bin/sh
 
 FILE=$(find ~/uni -type f -iname '*.pdf' | fzf)
 
-[ ! -z "$FILES" ] && zathura $FILE > /dev/null 2>&1
+[ ! -z "$FILE" ] && zathura $FILE > /dev/null 2>&1 &
