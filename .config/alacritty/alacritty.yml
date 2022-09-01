@@ -43,6 +43,6 @@ key_bindings:
   - { key: D, mods: Control,       mode: ~Vi,        action: ScrollHalfPageDown }
   - { key: G, mods: Control,       mode: ~Vi,        action: ScrollToTop        }
   - { key: G, mods: Shift|Control, mode: ~Vi,        action: ScrollToBottom     }
-  - { key: J, mods: Control,       mode: ~Search,    action: ToggleViMode       }
+  # - { key: J, mods: Control,       mode: ~Search,    action: ToggleViMode       }
   - { key: Escape,                 mode: Vi,         action: ToggleViMode       }
   - { key: P,                      mode: Vi|~Search, action: Paste              }

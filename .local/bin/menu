@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/sh
 
 options="\
 alacritty
@@ -6,10 +6,10 @@ chromium
 discord
 easytag
 gimp
-qbittorrent
 pavucontrol
-thunar\
-"
+qbittorrent
+thunar
+zathura"
 
 arguments="
 	--insensitive
@@ -26,14 +26,3 @@ case "$1" in
 	pass) passmenu $arguments --prompt pass ;;
 	*) echo -e "Usage:\n\tmenu [run | pass]" ;;
 esac
-#dmenu-wl_run $arguments
-
-#dmenu-wl_run \
-#	--prompt "dmenu" \
-#	--insensitive \
-#	--height 24 \
-#	--font-name "FiraCode Nerd Font" \
-#	--normal-background    "#282828" \
-#	--normal-foreground    "#ebdbb2" \
-#	--selected-background  "#d3869b" \
-#	--selected-foreground  "#282828" \
