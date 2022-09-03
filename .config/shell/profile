@@ -7,12 +7,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-# Path
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/bin/statusbar:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="~/.npm-global/bin:$PATH"
-
 # Programs
 export EDITOR=nvim
 export TERMINAL=alacritty
@@ -24,3 +18,11 @@ export FZF_DEFAULT_OPS='--layout=reverse -i'
 export TERM=xterm-256color
 export ZDOTDIR="$HOME/.config/zsh"
 export GPG_TTY=$(tty)
+export PNPM_HOME="/home/sotiris/.local/share/pnpm"
+
+# Path
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin/statusbar:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="~/.npm-global/bin:$PATH"
+export PATH="$PNPM_HOME:$PATH"
