@@ -1,5 +1,6 @@
 /*
 
+!/.gitignore
 !/README.md
 
 !/.config
@@ -10,10 +11,6 @@
 
 !/.local/bin/
 /.local/bin/*
-
-!/.bashrc
-!/.gitignore
-!/.vimrc
 
 !/.config/alacritty/
 !/.config/shell/
