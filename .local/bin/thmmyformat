@@ -4,21 +4,20 @@ import sys
 import os
 import re
 
-# filenames = os.listdir('/home/sotiris/testing1')
 
-filenames = [
-    "folder"
-    "Control1_22022.pdf",
-    "SAE_1_Jun2021.pdf",
-    "SAE_1_febr2021.pdf",
-    "SAE1-Sept2022.pdF",
-    "SAE_I_june_2021_solutions.pdf",
-    "SAEI_Sept_2021_Solutions.pdf",
-    "sae1_sept_2021_quiz_and_design.pdf",
-    "SAE_1_Feb_2021_Solutions.txt",
-    "sae_I_Iounios_2022.pdf",
-    "SAE_1_Feb_2022.pdf",
-]
+# filenames = [
+#     "folder"
+#     "Control1_22022.pdf",
+#     "SAE_1_Jun2021.pdf",
+#     "SAE_1_febr2021.pdf",
+#     "SAE1-Sept2022.pdF",
+#     "SAE_I_june_2021_solutions.pdf",
+#     "SAEI_Sept_2021_Solutions.pdf",
+#     "sae1_sept_2021_quiz_and_design.pdf",
+#     "SAE_1_Feb_2021_Solutions.txt",
+#     "sae_I_Iounios_2022.pdf",
+#     "SAE_1_Feb_2022.pdf",
+# ]
 
 
 class bcolors:
@@ -37,8 +36,12 @@ def print_warning(warning):
     print(bcolors.WARNING + f"WARNING: {warning}" + bcolors.ENDC)
 
 
-def check_if_valid_file(filename):
+def check_if_valid_file(directory, filename):
     warnings = []
+
+    if os.path.isdir(f"{directory}/{filename}"):
+        return (False, '', warnings)
+
     temp = os.path.splitext(filename)
     extension = temp[1].lower()
 
@@ -96,9 +99,11 @@ def extract_semester(filename):
 
 def show_usage():
     print("Usage:")
-    print("\tthmmyformat [OPTION]... CODENAME [DIRECTORY]")
+    print("\tthmmyformat [OPTION]... CODENAME [DIRECTORY]\n")
     print("Example:")
-    print("\tthmmyformat ilektroniki2 ~/thmmy/5o/sae2/themata/")
+    print("\tthmmyformat ilektroniki2 ~/thmmy/5o/sae2/themata/\n")
+    print("Example (using current directory):")
+    print("\tthmmyformat sae2\n")
     print("Result:")
     print("\tilektroniki2_2015_june.pdf")
     print("\tilektroniki2_2018_sept.pdf")
@@ -114,22 +119,34 @@ def print_changes(changes):
             bcolors.FAIL + f"{change[0]}" + bcolors.ENDC + " -> " +
             bcolors.OKGREEN + f"{change[1]}" + bcolors.ENDC
         )
-
-    print("\nDo you want to rename the following files? (y/N)")
+    print('')
 
 
 def main():
-    if len(sys.argv) > 1:
-        codename = sys.argv[1]
-    else:
+    dir = ""
+    if len(sys.argv) < 2:
         show_usage()
         exit()
+    elif len(sys.argv) == 2:
+        dir = os.getcwd()
+        codename = sys.argv[1]
+    elif len(sys.argv) == 3 and os.path.isdir(sys.argv[1]):
+        dir = sys.argv[1]
+        codename = sys.argv[2]
+    else:
+        print(bcolors.FAIL + "Invalid syntax" + bcolors.ENDC + "\n")
+        show_usage()
+        return
+
+    print(dir)
+    filenames = os.listdir(dir)
 
     changes = []
     warnings = []
 
     for filename in filenames:
-        is_valid, extension, filename_warnings = check_if_valid_file(filename)
+        is_valid, extension, filename_warnings = check_if_valid_file(
+            dir, filename)
         warnings += filename_warnings
 
         if not is_valid:
@@ -145,10 +162,27 @@ def main():
         warnings += year_warnings
         warnings += semester_warnings
 
+    print(f"Running thmmyformat in \"{dir}\"...\n")
+
+    if len(changes) == 0:
+        print(bcolors.FAIL +
+              f"No files to rename in \"{dir}\", exiting..." + bcolors.ENDC)
+        return
+
     print_changes(changes)
 
     for warning in warnings:
         print_warning(warning)
+
+    user_input = input("\nDo you want to rename the following files? (y/N): ")
+
+    if user_input in ["", "y", "Y"]:
+        for change in changes:
+            os.rename(f"{dir}/{change[0]}", f"{dir}/{change[1]}")
+    else:
+        exit()
+
+    print("\n...done")
 
 
 if __name__ == "__main__":
