@@ -70,6 +70,7 @@ input "*" {
 }
 
 for_window [ title="imv" ] input "*" scroll_factor 1.0
+# for_window [ app_id="File Operation Progress" ] input "*" floating enable
 
 # swaymsg -t get_inputs
 input "type:keyboard" {
@@ -297,4 +298,5 @@ bindsym $mod+r mode "resize"
 #}
 
 exec waybar
+exec mako
 # include /etc/sway/config.d/*

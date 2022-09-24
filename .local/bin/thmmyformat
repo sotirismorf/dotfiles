@@ -1,0 +1,155 @@
+#!/usr/bin/python
+
+import sys
+import os
+import re
+
+# filenames = os.listdir('/home/sotiris/testing1')
+
+filenames = [
+    "folder"
+    "Control1_22022.pdf",
+    "SAE_1_Jun2021.pdf",
+    "SAE_1_febr2021.pdf",
+    "SAE1-Sept2022.pdF",
+    "SAE_I_june_2021_solutions.pdf",
+    "SAEI_Sept_2021_Solutions.pdf",
+    "sae1_sept_2021_quiz_and_design.pdf",
+    "SAE_1_Feb_2021_Solutions.txt",
+    "sae_I_Iounios_2022.pdf",
+    "SAE_1_Feb_2022.pdf",
+]
+
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+
+def print_warning(warning):
+    print(bcolors.WARNING + f"WARNING: {warning}" + bcolors.ENDC)
+
+
+def check_if_valid_file(filename):
+    warnings = []
+    temp = os.path.splitext(filename)
+    extension = temp[1].lower()
+
+    if extension in ['.pdf', '.jpg', '.jpeg' '.png']:
+        return (True, extension, warnings)
+    else:
+        warnings.append(f'Invalid file format for file: {filename}')
+        return (False, extension, warnings)
+
+
+def extract_year(filename):
+    warnings = []
+    temp = re.findall(r'\d+', filename)
+    numbers = list(map(int, temp))
+    year = max(numbers)
+
+    if year > 2000 and year < 2100:
+        return year, warnings
+    else:
+        warnings.append(f"No valid year in filename: \"{filename}\"")
+        return 0, warnings
+
+
+def extract_semester(filename):
+    name = filename.lower()
+    month = "unknown"
+
+    june = ["jun", "ιουν", "ioun"]
+    february = ["feb", "fevr", "flevar", "φεβρ", "φλεβ"]
+    september = ["sept", "σεπτ"]
+    solutions = ["solut", "λύσεις", "λυσεις", "solved"]
+
+    for entry in february:
+        if entry in name:
+            month = "febr"
+            break
+    for entry in june:
+        if entry in name:
+            month = "june"
+            break
+    for entry in september:
+        if entry in name:
+            month = "sept"
+            break
+    for entry in solutions:
+        if entry in name:
+            month = month + "_solutions"
+
+    warnings = []
+
+    if (month == "unknown"):
+        warnings.append(f"No month found in \"{filename}\"")
+    return month, warnings
+
+
+def show_usage():
+    print("Usage:")
+    print("\tthmmyformat [OPTION]... CODENAME [DIRECTORY]")
+    print("Example:")
+    print("\tthmmyformat ilektroniki2 ~/thmmy/5o/sae2/themata/")
+    print("Result:")
+    print("\tilektroniki2_2015_june.pdf")
+    print("\tilektroniki2_2018_sept.pdf")
+    print("\t...")
+    print("\tilektroniki2_2022_sept.pdf")
+
+
+def print_changes(changes):
+    print("\nThe following changes will made:\n")
+
+    for change in changes:
+        print(
+            bcolors.FAIL + f"{change[0]}" + bcolors.ENDC + " -> " +
+            bcolors.OKGREEN + f"{change[1]}" + bcolors.ENDC
+        )
+
+    print("\nDo you want to rename the following files? (y/N)")
+
+
+def main():
+    if len(sys.argv) > 1:
+        codename = sys.argv[1]
+    else:
+        show_usage()
+        exit()
+
+    changes = []
+    warnings = []
+
+    for filename in filenames:
+        is_valid, extension, filename_warnings = check_if_valid_file(filename)
+        warnings += filename_warnings
+
+        if not is_valid:
+            continue
+
+        year, year_warnings = extract_year(filename)
+        semester, semester_warnings = extract_semester(filename)
+
+        formated_filename = f"{codename}_{year}_{semester}.pdf"
+
+        changes.append((filename, formated_filename))
+
+        warnings += year_warnings
+        warnings += semester_warnings
+
+    print_changes(changes)
+
+    for warning in warnings:
+        print_warning(warning)
+
+
+if __name__ == "__main__":
+    main()

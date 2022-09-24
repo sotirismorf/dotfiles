@@ -2,14 +2,15 @@
 
 options="\
 alacritty
+alacritty -e notesearch
 chromium
 discord
 easytag
 gimp
 pavucontrol
-alacritty -e notesearch
 qbittorrent
 thunar
+torbrowser-launcher
 zathura"
 
 arguments="

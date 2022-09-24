@@ -13,7 +13,7 @@ export TERMINAL=alacritty
 export BROWSER=chromium
 
 # Settings
-export QT_QPA_PLATFORM=wayland
+# export QT_QPA_PLATFORM=wayland
 export FZF_DEFAULT_OPS='--layout=reverse -i'
 export TERM=xterm-256color
 export ZDOTDIR="$HOME/.config/zsh"
@@ -21,6 +21,7 @@ export GPG_TTY=$(tty)
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export CARGO_HOME="$HOME/.local/share/cargo"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
+export NVM_DIR="$HOME/.config/nvm"
 
 # Path
 export PATH="$HOME/.local/bin:$PATH"

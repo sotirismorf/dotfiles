@@ -19,7 +19,7 @@
 !/.config/sway/
 !/.config/user-dirs.dirs
 !/.config/waybar/
-!/.config/zathura/zathurarc
+!/.config/zathura/
 !/.config/zsh/
 
 !/.local/bin/compileandrun
@@ -30,5 +30,6 @@
 !/.local/bin/setop
 !/.local/bin/theme
 !/.local/bin/update-grub
+!/.local/bin/thmmyformat
 !/.local/bin/ytdl
 !/.local/bin/notesearch
