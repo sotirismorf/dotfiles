@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# file=$(sxiv -to $HOME/pictures/wallpapers)
+
+# swaybg -o "*" -i $HOME/pictures/wallpapers/windows96.png -m fill
+killall swaybg
+swaybg -o "*" -c "#202020" -m fill > /dev/null &

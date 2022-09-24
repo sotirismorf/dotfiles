@@ -1,0 +1,6 @@
+#!/bin/sh
+
+$HOME/.loca/bin/wallpaper
+
+killall waybar
+waybar > /dev/null &

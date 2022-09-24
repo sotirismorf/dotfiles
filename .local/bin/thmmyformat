@@ -155,12 +155,15 @@ def main():
         year, year_warnings = extract_year(filename)
         semester, semester_warnings = extract_semester(filename)
 
+        warnings += year_warnings
+        warnings += semester_warnings
+
+        if year == 0 or semester == "unknown":
+            continue
+
         formated_filename = f"{codename}_{year}_{semester}.pdf"
 
         changes.append((filename, formated_filename))
-
-        warnings += year_warnings
-        warnings += semester_warnings
 
     print(f"Running thmmyformat in \"{dir}\"...\n")
 

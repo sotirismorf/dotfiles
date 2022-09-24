@@ -16,6 +16,7 @@
 !/.config/shell/
 !/.config/chromium-flags.conf
 !/.config/git/
+!/.config/hypr/
 !/.config/sway/
 !/.config/user-dirs.dirs
 !/.config/waybar/
@@ -27,9 +28,11 @@
 !/.local/bin/connect-to-server
 !/.local/bin/download-video
 !/.local/bin/menu
-!/.local/bin/setop
-!/.local/bin/theme
-!/.local/bin/update-grub
-!/.local/bin/thmmyformat
-!/.local/bin/ytdl
 !/.local/bin/notesearch
+!/.local/bin/setop
+!/.local/bin/startup
+!/.local/bin/theme
+!/.local/bin/thmmyformat
+!/.local/bin/update-grub
+!/.local/bin/wallpaper
+!/.local/bin/ytdl
