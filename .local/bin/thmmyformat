@@ -45,10 +45,11 @@ def check_if_valid_file(directory, filename):
     temp = os.path.splitext(filename)
     extension = temp[1].lower()
 
-    if extension in ['.pdf', '.jpg', '.jpeg' '.png']:
+    if extension in ['.pdf', '.jpg', '.jpeg', '.png']:
         return (True, extension, warnings)
     else:
-        warnings.append(f'Invalid file format for file: {filename}')
+        warnings.append(
+            f'Invalid file format for file: {filename} {extension}')
         return (False, extension, warnings)
 
 
@@ -56,12 +57,16 @@ def extract_year(filename):
     warnings = []
     temp = re.findall(r'\d+', filename)
     numbers = list(map(int, temp))
-    year = max(numbers)
 
-    if year > 2000 and year < 2100:
-        return year, warnings
+    if len(numbers) > 0:
+        year = max(numbers)
+        if year > 2000 and year < 2100:
+            return year, warnings
+        else:
+            warnings.append(f"No valid year in filename: \"{filename}\"")
+            return 0, warnings
     else:
-        warnings.append(f"No valid year in filename: \"{filename}\"")
+        warnings.append(f"No year found in filename: \"{filename}\"")
         return 0, warnings
 
 
@@ -70,10 +75,15 @@ def extract_semester(filename):
     month = "unknown"
 
     june = ["jun", "ιουν", "ioun"]
+    january = ["jan", "ian", "ιανου"]
     february = ["feb", "fevr", "flevar", "φεβρ", "φλεβ"]
     september = ["sept", "σεπτ"]
     solutions = ["solut", "λύσεις", "λυσεις", "solved"]
 
+    for entry in january:
+        if entry in name:
+            month = "jan"
+            break
     for entry in february:
         if entry in name:
             month = "febr"
@@ -143,6 +153,7 @@ def main():
 
     changes = []
     warnings = []
+    extension = "unknown"
 
     for filename in filenames:
         is_valid, extension, filename_warnings = check_if_valid_file(
@@ -161,7 +172,7 @@ def main():
         if year == 0 or semester == "unknown":
             continue
 
-        formated_filename = f"{codename}_{year}_{semester}.pdf"
+        formated_filename = f"{codename}_{year}_{semester}{extension}"
 
         changes.append((filename, formated_filename))
 
@@ -172,7 +183,7 @@ def main():
               f"No files to rename in \"{dir}\", exiting..." + bcolors.ENDC)
         return
 
-    print_changes(changes)
+    print_changes(sorted(changes, key=lambda tup: tup[0]))
 
     for warning in warnings:
         print_warning(warning)
