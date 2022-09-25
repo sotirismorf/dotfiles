@@ -4,8 +4,8 @@
     "height": 26,
      //"width": 90,
     "spacing": 4,
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
+    "modules-left": ["wlr/workspaces", "sway/mode"],
+    "modules-center": ["hyprland/window"],
     "modules-right": ["pulseaudio", "network", "sway/language", "battery", "clock", "tray"],
     // Modules configuration
     // "sway/workspaces": {
@@ -23,6 +23,20 @@
     //         "default": ""
     //     }
     // },
+	"wlr/workspaces": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "urgent": "!",
+        /* "active": "", */
+        "default": ""
+      }
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,

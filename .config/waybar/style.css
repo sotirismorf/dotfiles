@@ -59,11 +59,17 @@ window#waybar.alacritty {
 	border-color: #d4869b;
 }
 
-#workspaces button.focused {
+/* this is for sway  */
+/* #workspaces button.active { */
+/* 	border-color: #d4869b; */
+/* 	color: @gv_magenta;  */
+/* } */
+
+#workspaces button.active {
     /*background-color: rgba(255, 255, 255, 0.4);*/
     /*border-radius: 0.25rem;*/
 	border-color: #d4869b;
-	color:#d4869b; 
+	color: @gv_magenta; 
 }
 
 #workspaces button.urgent {
