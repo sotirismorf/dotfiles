@@ -1,0 +1,61 @@
+#!/usr/bin/python
+
+import subprocess
+import sys
+import io
+import os
+from configparser import ConfigParser
+
+
+def main():
+    config = ConfigParser()
+
+    desktop_entries = os.listdir("/usr/share/applications")
+    entry_dict = {}
+
+    config.read('/usr/share/applications/imv.desktop')
+
+    for entry in desktop_entries:
+        try:
+            config.read(f'/usr/share/applications/{entry}')
+
+            entry_name = config.get("Desktop Entry", "Name")
+            entry_exec = config.get("Desktop Entry", "Exec", raw=True)
+
+            entry_dict[entry_name] = entry_exec
+
+        except Exception:
+            pass
+
+    input = ""
+
+    for entry in entry_dict:
+        input += f"{entry}\n"
+
+    input += f"{entry[0]}"
+
+    args = ["dmenu-wl",
+            "--insensitive",
+            "--height", "24",
+            "--normal-background", "#282828",
+            "--normal-foreground", "#ebdbb2",
+            "--selected-background", "#d3869b",
+            "--selected-foreground", "#282828",
+            "--font-name", "FiraCodeNerdFont"
+            ]
+
+    proc = subprocess.Popen(
+        args, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+
+    proc.stdin.write(str.encode(input))
+    proc.stdin.close()
+
+    while proc.returncode is None:
+        proc.poll()
+
+    for line in io.TextIOWrapper(proc.stdout, encoding="utf-8"):
+        os.system(entry_dict[line])
+
+
+if __name__ == "__main__":
+    main()

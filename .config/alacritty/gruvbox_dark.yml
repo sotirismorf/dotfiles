@@ -3,7 +3,7 @@ colors:
   primary:
     # hard contrast background - '#1d2021'
     background:        &gruvbox_dark_bg   '#282828'
-    #background: &gruvbox_dark_bg '#000000'
+    background: &gruvbox_dark_bg '#000000'
     # soft contrast background - '#32302f'
     foreground:        '#ebdbb2'
     bright_foreground: '#fbf1c7'

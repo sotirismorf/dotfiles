@@ -2,6 +2,8 @@
 
 # file=$(sxiv -to $HOME/pictures/wallpapers)
 
-# swaybg -o "*" -i $HOME/pictures/wallpapers/windows96.png -m fill
-killall swaybg
-swaybg -o "*" -c "#202020" -m fill > /dev/null &
+if [[ $(pgrep -f swaybg) ]]; then
+	killall swaybg
+fi
+# swaybg -o "*" -c "#202020" -m fill > /dev/null &
+swaybg -o "*" -i $HOME/pictures/sync/wallpapers/canyon.jpg -m fill > /dev/null &

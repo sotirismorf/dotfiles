@@ -28,6 +28,7 @@
 !/.local/bin/connect-to-server
 !/.local/bin/download-video
 !/.local/bin/menu
+!/.local/bin/launcher
 !/.local/bin/notesearch
 !/.local/bin/setop
 !/.local/bin/startup

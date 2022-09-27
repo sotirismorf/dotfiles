@@ -1,6 +1,21 @@
 #!/bin/sh
 
-$HOME/.loca/bin/wallpaper
+$HOME/.local/bin/wallpaper
 
-killall waybar
+if [[ $(pgrep -f waybar) ]]; then
+	killall waybar
+fi
+
 waybar > /dev/null &
+
+if [[ $(pgrep -f mako) ]]; then
+	killall mako
+fi
+
+mako > /dev/null &
+
+if [[ $(pgrep -f thunar) ]]; then
+	killall thunar
+fi
+
+thunar --daemon > /dev/null &

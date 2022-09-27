@@ -8,6 +8,8 @@ discord
 easytag
 gimp
 pavucontrol
+firefox
+brave --ozone-platform-hint=auto
 qbittorrent
 thunar
 torbrowser-launcher
@@ -24,7 +26,8 @@ arguments="
 "
 
 case "$1" in
-	run) eval $(echo -e "$options" | dmenu-wl $arguments --prompt dmenu) ;;
+	# run) eval $(echo -e "$options" | dmenu-wl $arguments --prompt dmenu) ;;
+	run) $HOME/.local/bin/launcher ;;
 	pass) passmenu $arguments --prompt pass ;;
 	*) echo -e "Usage:\n\tmenu [run | pass]" ;;
 esac
