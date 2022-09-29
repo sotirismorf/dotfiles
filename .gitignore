@@ -13,12 +13,13 @@
 /.local/bin/*
 
 !/.config/alacritty/
-!/.config/shell/
+!/.config/backup/
 !/.config/chromium-flags.conf
 !/.config/git/
 !/.config/hypr/
-!/.config/tofi/
+!/.config/shell/
 !/.config/sway/
+!/.config/tofi/
 !/.config/user-dirs.dirs
 !/.config/waybar/
 !/.config/zathura/

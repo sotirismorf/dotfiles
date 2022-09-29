@@ -10,7 +10,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # Programs
 export EDITOR=nvim
 export TERMINAL=alacritty
-export BROWSER=chromium
+export BROWSER=firefox
 
 # Settings
 # export QT_QPA_PLATFORM=wayland
