@@ -1,0 +1,11 @@
+font=/usr/share/fonts/noto/NotoSansMono-Regular.ttf
+font-size=14
+border-width=2
+drun-launch=true
+outline-width=0
+width=600px
+prompt-text=""
+
+text-color=#ebdbb2
+border-color=#b16286
+selection-color=#b16286

@@ -17,6 +17,7 @@
 !/.config/chromium-flags.conf
 !/.config/git/
 !/.config/hypr/
+!/.config/tofi/
 !/.config/sway/
 !/.config/user-dirs.dirs
 !/.config/waybar/

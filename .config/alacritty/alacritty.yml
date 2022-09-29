@@ -4,7 +4,7 @@ import:
   - ~/.config/alacritty/gruvbox_dark.yml
 
 window:
-  opacity: 0.8
+  opacity: 1.0
   dimensions:
     columns: 120
 

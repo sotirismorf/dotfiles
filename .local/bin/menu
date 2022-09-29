@@ -27,7 +27,8 @@ arguments="
 
 case "$1" in
 	# run) eval $(echo -e "$options" | dmenu-wl $arguments --prompt dmenu) ;;
-	run) $HOME/.local/bin/launcher ;;
+	# run) $HOME/.local/bin/launcher ;;
+	run) tofi-drun ;;
 	pass) passmenu $arguments --prompt pass ;;
 	*) echo -e "Usage:\n\tmenu [run | pass]" ;;
 esac
