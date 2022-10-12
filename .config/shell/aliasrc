@@ -9,7 +9,7 @@ alias htop='htop --tree'
 
 alias find-node-modules='find . -name 'node_modules' -prune'
 alias ls='ls --color=auto'
-alias du='du -sh'
+alias du='du -h'
 alias diff='diff --color=auto'
 alias todo='nvim ~/.local/share/todo'
 alias vim='nvim'
