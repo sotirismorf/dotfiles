@@ -7,6 +7,7 @@ window:
   opacity: 1.0
   dimensions:
     columns: 120
+    lines: 80
 
 font:
   normal:
@@ -31,18 +32,19 @@ font:
 cursor:
   style:
     shape: Beam
+  blinking: Off
   vi_mode_style: Block
-  thickness: 0.15
+  thickness: 0.2
 
 mouse:
   hide_when_typing: false
 
 key_bindings:
   - { key: N, mods: Control,                         action: SpawnNewInstance   }
-  - { key: U, mods: Control,       mode: ~Vi,        action: ScrollHalfPageUp   }
-  - { key: D, mods: Control,       mode: ~Vi,        action: ScrollHalfPageDown }
-  - { key: G, mods: Control,       mode: ~Vi,        action: ScrollToTop        }
-  - { key: G, mods: Shift|Control, mode: ~Vi,        action: ScrollToBottom     }
+#   - { key: U, mods: Control,       mode: ~Vi,        action: ScrollHalfPageUp   }
+#   - { key: D, mods: Control,       mode: ~Vi,        action: ScrollHalfPageDown }
+#   - { key: G, mods: Control,       mode: ~Vi,        action: ScrollToTop        }
+#   - { key: G, mods: Shift|Control, mode: ~Vi,        action: ScrollToBottom     }
   # - { key: J, mods: Control,       mode: ~Search,    action: ToggleViMode       }
-  - { key: Escape,                 mode: Vi,         action: ToggleViMode       }
-  - { key: P,                      mode: Vi|~Search, action: Paste              }
+  # - { key: Escape,                 mode: Vi,         action: ToggleViMode       }
+  # - { key: P,                      mode: Vi|~Search, action: Paste              }
