@@ -19,6 +19,7 @@
 !/.config/hypr/
 !/.config/shell/
 !/.config/sway/
+!/.config/tmux/
 !/.config/tofi/
 !/.config/user-dirs.dirs
 !/.config/waybar/
