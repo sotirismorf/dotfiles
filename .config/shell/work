@@ -1,0 +1,4 @@
+#!/bin/sh
+
+alias winz='pass -c winzone'
+alias vpn-connect="sudo openvpn $HOME/noris/wlan/*.ovpn"

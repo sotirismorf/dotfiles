@@ -40,9 +40,8 @@ PROMPT+="%{$fg[$DOLLAR_COLOR]%}$ "
 PROMPT+="%{$reset_color%}"
 
 # Load aliases and shortcuts if existent.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
+[ -f "$HOME/.config/shell/common" ] && source "$HOME/.config/shell/common"
+[ -f "$HOME/.config/shell/work" ] && source "$HOME/.config/shell/work"
 
 # Basic auto/tab complete:
 autoload -Uz compinit

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+alias backup='rsync -aP --exclude-from=/home/$USER/.config/backup/ignorelist /home/$USER/ terra/home/'
+alias study-with-me='mpv --no-terminal "https://www.youtube.com/watch?v=sWaSi6cdXXE" & disown'
+alias waybar-refresh='killall waybar ; waybar & disown'
+alias paccache-last2='paccache -rk2'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_MUSIC_DIR="$HOME/music"
+export XDG_SCREENSHOTS_DIR="$HOME/pictures/screenshots"
+export XDG_STATE_HOME="$HOME/.local/state"
