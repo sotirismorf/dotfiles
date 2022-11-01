@@ -22,6 +22,8 @@ alias vim='nvim'
 alias todo='nvim ~/.local/share/todo'
 alias du='du -h'
 alias diff='diff --color=auto'
+alias k='kubectl'
+
 
 export FZF_DEFAULT_OPS='--layout=reverse -i'
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"

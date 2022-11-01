@@ -9,7 +9,7 @@ setopt PROMPT_SUBST
 setopt interactive_comments
 setopt appendhistory
 setopt SHARE_HISTORY
-setopt complete_aliases
+# setopt complete_aliases
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -70,6 +70,8 @@ bindkey '^S' fzf_hist_search
 # vi mode
 
 source "$ZDOTDIR/scripts/vi-mode.zsh"
+source "$ZDOTDIR/scripts/minicube_comp.zsh"
+source "$ZDOTDIR/scripts/kubectl_comp.zsh"
 
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
