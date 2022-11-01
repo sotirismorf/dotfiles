@@ -9,6 +9,13 @@ setopt PROMPT_SUBST
 setopt interactive_comments
 setopt appendhistory
 setopt SHARE_HISTORY
+setopt complete_aliases
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 
 # History in cache directory:
 HISTSIZE=1000000
@@ -55,6 +62,10 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
+
+function fzf_hist_search () { fc -ln 0 | fzf | wl-copy }
+zle -N fzf_hist_search
+bindkey '^S' fzf_hist_search
 
 # vi mode
 
