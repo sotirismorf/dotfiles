@@ -1,0 +1,44 @@
+#!/bin/sh
+
+WORKDIRS="\
+$HOME/.config/shell
+$HOME/.config/alacritty
+$HOME/.config/zsh
+$HOME/.config/tmux
+$HOME/.local/bin/dotfilectl
+$HOME/.zshenv
+"
+
+ACTION="$1"
+ENVIRONMENT="$2"
+DOTFILEDIR="$HOME/.dotfiles"
+
+ctl_push () {
+	cp -Tr $1 "$DOTFILEDIR/$(realpath --relative-to=$HOME $1)"
+}
+
+dotfilectl_push () {
+	DIRS=$1
+
+	echo $DIRS
+	for ITEM in $DIRS
+	do 
+		ctl_push $ITEM
+	done
+}
+
+case $ENVIRONMENT in
+	work) DIRS=$WORKDIRS ;;
+	personal) DIRS=$WORKDIRS ;;
+	*) echo -e "Usage:\n\dotfilectl [pull | push]" ;;
+esac
+
+case $ACTION in
+	pull) echo "haven't implemented this yet" ;;
+	push) dotfilectl_push "$DIRS" ;;
+	*) echo -e "Usage:\n\dotfilectl [pull | push]" ;;
+esac
+
+echo "\n"
+
+git -C $DOTFILEDIR status
