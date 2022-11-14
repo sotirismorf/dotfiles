@@ -1,0 +1,39 @@
+#!/bin/bash
+
+FQDN=${1##*/}
+
+CSR_DIR="$HOME/p/cert/csr"
+
+[ ! -d "$HOME/p/cert/csr" ] && mkdir "$HOME/p/cert/csr"
+
+if [ -d "$HOME/p/cert/csr/$FQDN" ]
+then
+	echo "Directory $FQDN already exists"
+	read -p "Do you want to overwrite it (Y/n)? " -r
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		echo "Overwriting"
+	else
+		exit 0
+	fi
+else
+	mkdir "$HOME/p/cert/csr/$FQDN"
+fi
+
+ALT_NAME="DNS:$FQDN"
+while IFS= read -r line; do
+	ALT_NAME+=", DNS:$line"
+done < $1
+
+openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:secp384r1 \
+	-out "$HOME/p/cert/csr/$FQDN/$FQDN.key.pem"
+
+openssl req \
+	-new \
+	-key "$HOME/p/cert/csr/$FQDN/$FQDN.key.pem" \
+	-subj "/CN=$FQDN" \
+	-addext "subjectAltName=$ALT_NAME" \
+	-out "$HOME/p/cert/csr/$FQDN/$FQDN.csr.pem"
+
+# openssl req -in example.domain.net.csr.pem -noout -pubkey | md5sum
+# openssl pkey -in example.domain.net.key.pem -pubout | md5sum
