@@ -7,6 +7,7 @@ export BROWSER=firefox
 export TERM=xterm-256color
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 alias cp='cp -v'
 alias mv='mv -v'
@@ -14,6 +15,8 @@ alias rm='rm -v'
 
 alias htop='htop --tree'
 alias ls='ls --color=auto'
+alias lsd='ls --color=auto -al'
+alias lsl='ls --color=auto -l'
 
 alias find-node-modules='find . -name 'node_modules' -prune'
 alias myip='curl ifconfig.co/'
@@ -31,3 +34,4 @@ export NVM_DIR="$HOME/.config/nvm"
 export NPM_CONFIG_USERCONFIG="$HOME/.config/npm/npmrc"
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export CARGO_HOME="$HOME/.local/share/cargo"
+export MOZ_ENABLE_WAYLAND=1
