@@ -1,0 +1,18 @@
+#!/bin/bash
+
+IGNORE_LIST=$HOME/.config/backup/ignorelist
+BACKUP_DIR=$HOME/.backups
+GPG_KEY_ID="3F19A13653AE74042196941F32AD8F8427E7865E"
+
+rsync -aP --exclude-from=$IGNORE_LIST $HOME /tmp/backup/
+
+echo "Creating tar archive..."
+
+BACKUP_FILENAME="backup-work-$(date +"%Y-%m-%d-%H-%M").tar"
+tar cf "/tmp/$BACKUP_FILENAME" /tmp/backup
+
+echo "Encrypting tar file..."
+
+gpg --output "$BACKUP_DIR/$BACKUP_FILENAME.gpg" --encrypt --recipient $GPG_KEY_ID "/tmp/$BACKUP_FILENAME"
+
+[ -d /media/$USER/KINGSTON/backups-work ] && echo "Copying to flash drive..." && rsync -aP "$BACKUP_DIR/" /media/sotiris/KINGSTON/backups-work
