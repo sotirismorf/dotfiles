@@ -9,18 +9,29 @@ ctl_main () {
 	local HOME_DIR_FILE="$HOME/$1"
 	local REPO_FILE="$DOTFILEDIR/$1"
 
-	[ -f $HOME_DIR_FILE ] || echo "$HOME_DIR_FILE is not a file"
-
 	cmp --silent -- "$HOME_DIR_FILE" "$REPO_FILE" && return 1
 
 	case $ACTION in
-		push) cp -v $HOME_DIR_FILE $REPO_FILE ;;
-		pull) cp -v $REPO_FILE $HOME_DIR_FILE ;;
+		push)
+			if [ ! -f $HOME_DIR_FILE ]; then
+				echo "$HOME_DIR_FILE is not a file"
+				return 1
+			fi
+			cp -v $HOME_DIR_FILE $REPO_FILE 
+			;;
+		pull) 
+			cp -v $REPO_FILE $HOME_DIR_FILE 
+			;;
 		*) echo -e "Usage:\n\dotfilectl [pull | push]" ;;
 	esac
 
 	MODIFIED_FILES=$(($MODIFIED_FILES+1))
 }
+
+if [ ! -d "$HOME/.config/dotfilectl" ]; then
+	mkdir "$HOME/.config/dotfilectl"
+	return 1
+fi
 
 while read ITEM; do
 	ctl_main $ITEM
