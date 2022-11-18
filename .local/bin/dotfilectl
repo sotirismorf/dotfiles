@@ -1,44 +1,34 @@
 #!/bin/sh
 
-WORKDIRS="\
-$HOME/.config/shell
-$HOME/.config/alacritty
-$HOME/.config/zsh
-$HOME/.config/tmux
-$HOME/.local/bin/dotfilectl
-$HOME/.zshenv
-"
-
 ACTION="$1"
 ENVIRONMENT="$2"
 DOTFILEDIR="$HOME/.dotfiles"
+MODIFIED_FILES=0
 
-ctl_push () {
-	cp -Tr $1 "$DOTFILEDIR/$(realpath --relative-to=$HOME $1)"
+ctl_main () {
+	local HOME_DIR_FILE="$HOME/$1"
+	local REPO_FILE="$DOTFILEDIR/$1"
+
+	[ -f $HOME_DIR_FILE ] || echo "$HOME_DIR_FILE is not a file"
+
+	cmp --silent -- "$HOME_DIR_FILE" "$REPO_FILE" && return 1
+
+	case $ACTION in
+		push) cp -v $HOME_DIR_FILE $REPO_FILE ;;
+		pull) cp -v $REPO_FILE $HOME_DIR_FILE ;;
+		*) echo -e "Usage:\n\dotfilectl [pull | push]" ;;
+	esac
+
+	MODIFIED_FILES=$(($MODIFIED_FILES+1))
 }
 
-dotfilectl_push () {
-	DIRS=$1
+while read ITEM; do
+	ctl_main $ITEM
+done < ~/.config/dotfilectl/files
 
-	echo $DIRS
-	for ITEM in $DIRS
-	do 
-		ctl_push $ITEM
-	done
-}
+echo "$MODIFIED_FILES files modified..."
 
-case $ENVIRONMENT in
-	work) DIRS=$WORKDIRS ;;
-	personal) DIRS=$WORKDIRS ;;
-	*) echo -e "Usage:\n\dotfilectl [pull | push]" ;;
-esac
+echo "Printing git status..."
 
-case $ACTION in
-	pull) echo "haven't implemented this yet" ;;
-	push) dotfilectl_push "$DIRS" ;;
-	*) echo -e "Usage:\n\dotfilectl [pull | push]" ;;
-esac
-
-echo "\n"
 
 git -C $DOTFILEDIR status
