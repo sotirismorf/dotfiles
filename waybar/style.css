@@ -1,0 +1,100 @@
+* {
+  font-family:  "Sans", "Ubuntu Nerd Font";
+  font-size: 16px;
+}
+
+window#waybar {
+  color: #ebdbb2;
+  border: none;
+  background: #181818;
+  transition: 50ms;
+  box-shadow: none;
+}
+
+tooltip {
+  background: rgba(43, 48, 59, 1);
+  border: 1px solid rgba(100, 114, 125, 0.5);
+}
+
+#workspaces button {
+  padding: 0 3px;
+  background: #000;
+  border-radius: 0;
+}
+
+#workspaces button:hover {
+  background: #666;
+}
+
+#workspaces button.focused {
+  background: #b16286;
+}
+
+#workspaces button.urgent {
+  background: #d79921;
+}
+
+#window {
+  padding: 0 6px;
+}
+
+#mode {
+  background: #222;
+  padding: 0 6px;
+}
+
+#tray {
+  padding: 0 8px 0 0;
+}
+
+#bluetooth.connected {
+  color: #b8bb26;
+}
+
+#bluetooth.off {
+  color: #888;
+}
+
+#network {
+  color: #b8bb26;
+  padding: 0 10px;
+}
+
+#network.disconnected {
+  color: #955;
+}
+
+#idle_inhibitor {
+  padding: 0 20px 0 10px;
+}
+
+#language {
+  min-width: 30px;
+}
+
+#wireplumber, #backlight, #battery {
+  min-width: 60px;
+}
+
+#wireplumber {
+  padding: 0 1px 0 0;
+  /* border-style: solid; */
+  /* border-color: red; */
+  /* border-width: 1px; */
+}
+
+#battery.charging {
+  color: #b8bb26;
+}
+
+#battery.warning:not(.charging) {
+  color: #d79921;
+}
+
+#battery.critical:not(.charging) {
+  color: #fb4934;
+}
+
+#clock {
+  padding: 0 5px;
+}

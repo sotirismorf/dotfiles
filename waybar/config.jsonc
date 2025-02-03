@@ -1,0 +1,129 @@
+{
+  "reload_style_on_change": true,
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "sway/window"
+  ],
+  "modules-right": [
+    "tray",
+    "bluetooth",
+    "network#1",
+    "network#2",
+    "network#3",
+    "idle_inhibitor",
+    "sway/language",
+    "wireplumber",
+    "backlight",
+    "battery",
+    "clock"
+  ],
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true
+  },
+  "sway/window": {
+    "icon": true,
+    "icon-size": 16
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "bluetooth": {
+    "format": "",
+    "tooltip-format": "Bluetooth {status}",
+    "tooltip-format-connected": "Bluetooth {status} {device_enumerate}",
+    "tooltip-format-enumerate-connected": "\n{device_alias} ({device_battery_percentage}%)\nAddress: {device_address}"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "network#1": {
+    "interface": "wl*",
+    "format-wifi": "󰖩",
+    "format-ethernet": "󰈀",
+    "interval": 5,
+    "tooltip-format": "Strength: {signalStrength}%\nInterface: {ifname}\nIP Address: {ipaddr}/{cidr}\nDown: {bandwidthDownBytes}",
+    "format-linked": "{ifname} (No IP)",
+    "format-alt": "{essid} 󰖩"
+  },
+  "network#2": {
+    "interval": 5,
+    "interface": "en*",
+    "format-ethernet": "󰈀",
+    "tooltip-format": "Interface: {ifname}\nIP Address: {ipaddr}/{cidr}",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "󰈀",
+    "format-alt": "Ethernet 󰈀"
+  },
+  "network#3": {
+    "interval": 5,
+    "interface": "tun*",
+    "format-ethernet": "VPN",
+    "tooltip-format": "Interface: {ifname}\nIP Address: {ipaddr}/{cidr}",
+    "format-linked": "VPN (No IP)",
+    "format-disconnected": "VPN"
+  },
+  "sway/language": {
+    "format": "<span text_transform=\"uppercase\">{shortDescription}</span>",
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    "tooltip": false
+  },
+  "wireplumber": {
+    "format": "{volume}% {icon}",
+    "format-muted": "{volume}% ",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "clock": {
+    "format": "{:%a, %e %b %H:%M %p}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "\udb86\ude4e",
+      "\udb86\ude4f",
+      "\udb86\ude50",
+      "\udb86\ude51",
+      "\udb86\ude52",
+      "\udb86\ude53",
+      "\udb86\ude54",
+      "\udb86\ude55",
+      "\udb86\ude56",
+      "\udb81\udee8"
+    ]
+  },
+  "battery": {
+    "bat": "BAT1",
+    "interval": 5,
+    "format": "{capacity}%{icon}",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂"
+    ],
+    "format-notcharging": "{capacity}% 󰂃",
+    "format-charging": "{capacity}% 󰂄",
+    "format-full": "{capacity}% 󰁹"
+  }
+}
